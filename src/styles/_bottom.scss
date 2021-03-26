@@ -1,0 +1,12 @@
+.bottom-nav {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 20%, #ff8c7f 51%, #f99185 82%, #cf556c 100%);
+    box-shadow: 5px 0 15px #000;
+    z-index: 100;
+
+    .bottom-nav-icon {
+        color :#fff;
+    }
+}
