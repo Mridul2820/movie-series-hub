@@ -1,4 +1,6 @@
-import { useState} from 'react';
+import { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
@@ -10,6 +12,25 @@ import SearchIcon from '@material-ui/icons/Search';
 
 const MainNav = () => {
     const [value, setValue] = useState(0);
+    const history = useHistory()
+
+    useEffect(() => {
+        if(value === 0) {
+            history.push('/')
+        }
+
+        else if(value === 1) {
+            history.push('/movies')
+        }
+
+        else if(value === 2) {
+            history.push('/series')
+        }
+
+        else if(value === 3) {
+            history.push('/search')
+        }
+    }, [value, history])
 
     return (
         <BottomNavigation
