@@ -1,0 +1,18 @@
+.header {
+    width: 100%;
+    cursor: pointer;
+    position: fixed;
+    display: flex;justify-content: center;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    font-size: 5vw;
+    padding-bottom: 15px;
+    box-shadow: 0px 1px 15px #000;
+    color: #fff;
+    z-index: 100;
+
+    @media only screen and (max-width: $bp-large-3){
+        padding-top: 15px;
+        font-size: 6.4vw;
+    }
+}
