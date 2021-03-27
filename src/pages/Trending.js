@@ -13,14 +13,13 @@ const Trending = () => {
 
     const fetchTrending = async () => {
         const {data} = await axios.get(`${trendURL}${apiKey}&page=${page}`)
-
-        console.log(data)
-
+        // console.log(data)
         setTrends(data.results)
     }
 
     useEffect(() => {
         fetchTrending()
+        // eslint-disable-next-line
     }, [page])
 
     return (
@@ -39,7 +38,7 @@ const Trending = () => {
                     />
                 ))}
             </div>
-            <CustomPagination page={page} setPage={setPage} />
+            <CustomPagination setPage={setPage} />
         </div>
     )
 }
