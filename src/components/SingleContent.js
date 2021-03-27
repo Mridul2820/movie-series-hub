@@ -30,7 +30,7 @@ const SingleContent = ({ id, poster, title, date, media_type, vote_average}) => 
             />
             <b className="title">{title}</b>
             <span className="sub-title">
-                {media_type === "movie" ? "Movie" : "TV"}
+                {media_type === "movie" ? "Movie" : "TV Series"}
                 <span className="sub-title">{date}</span>
             </span>
         </div>
