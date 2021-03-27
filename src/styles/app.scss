@@ -15,6 +15,7 @@ $bp-small-3: 25em;       //400px
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -33,6 +34,20 @@ body {
 
     @media only screen and (max-width: $bp-small-1){
         padding-top: 80px;
+    }
+}
+
+.page-title {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    font-size: 2vw;
+    padding: 4px;
+    border-radius: 50px;
+    color: #222;
+
+    @media only screen and (max-width: $bp-large-3){
+        font-size: 6.4vw;
     }
 }
 
