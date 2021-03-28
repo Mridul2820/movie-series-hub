@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import SingleContent from '../components/SingleContent'
 import CustomPagination from '../components/CustomPagination'
+import Genres from '../components/Genres'
 
 const movieURL = 'https://api.themoviedb.org/3/discover/movie?'
 const apiKey = `api_key=${process.env.REACT_APP_API_KEY}`
@@ -12,10 +13,13 @@ const Movies = () => {
     const [movies, setMovies] = useState([])
     const [numOfPages, setNumOfPages] = useState()
 
+    const [genres, setGenres] = useState([])
+    const [selectedGenres, setSelectedGenres] = useState([])
+
     const fetchMovies = async () => {
         const {data} = await axios.get(`${movieURL}${apiKey}&page=${page}`)
 
-        console.log(data)
+        // console.log(data)
 
         setMovies(data.results)
         setNumOfPages(data.total_pages)
@@ -29,6 +33,14 @@ const Movies = () => {
     return (
         <div>
             <span className="page-title">Movies</span>
+            <Genres 
+                type="movie"
+                genres={genres} 
+                setGenres={setGenres}
+                selectedGenres={selectedGenres} 
+                setSelectedGenres={setSelectedGenres}
+                setPage={setPage}
+            />
             <div className="trending">
                 {movies && movies.map(movie => (
                     <SingleContent 
