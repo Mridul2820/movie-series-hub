@@ -3,6 +3,7 @@ import axios from 'axios'
 import SingleContent from '../components/SingleContent'
 import CustomPagination from '../components/CustomPagination'
 import Genres from '../components/Genres'
+import useGenre from '../hooks/useGenre'
 
 const movieURL = 'https://api.themoviedb.org/3/discover/movie?'
 const apiKey = `api_key=${process.env.REACT_APP_API_KEY}`
@@ -16,8 +17,10 @@ const Movies = () => {
     const [genres, setGenres] = useState([])
     const [selectedGenres, setSelectedGenres] = useState([])
 
+    const genreForURL = useGenre(selectedGenres)
+
     const fetchMovies = async () => {
-        const {data} = await axios.get(`${movieURL}${apiKey}&page=${page}`)
+        const {data} = await axios.get(`${movieURL}${apiKey}&page=${page}&with_genres=${genreForURL}`)
 
         // console.log(data)
 
@@ -28,7 +31,7 @@ const Movies = () => {
     useEffect(() => {
         fetchMovies()
         // eslint-disable-next-line
-    }, [page])
+    }, [page, genreForURL])
 
     return (
         <div>
