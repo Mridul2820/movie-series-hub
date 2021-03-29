@@ -44,7 +44,7 @@ const Movies = () => {
                 setSelectedGenres={setSelectedGenres}
                 setPage={setPage}
             />
-            <div className="trending">
+            <div className="content-list">
                 {movies && movies.map(movie => (
                     <SingleContent 
                         key={movie.id} 

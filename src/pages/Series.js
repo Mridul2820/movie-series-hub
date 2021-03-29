@@ -44,7 +44,7 @@ const Series = () => {
                 setSelectedGenres={setSelectedGenres}
                 setPage={setPage}
             />
-            <div className="trending">
+            <div className="content-list">
                 {series && series.map(tv => (
                     <SingleContent 
                         key={tv.id} 
