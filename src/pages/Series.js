@@ -5,13 +5,13 @@ import CustomPagination from '../components/CustomPagination'
 import Genres from '../components/Genres'
 import useGenre from '../hooks/useGenre'
 
-const movieURL = 'https://api.themoviedb.org/3/discover/tv?'
+const seriesURL = 'https://api.themoviedb.org/3/discover/tv?'
 const apiKey = `api_key=${process.env.REACT_APP_API_KEY}`
 
 const Series = () => {
 
     const [page, setPage] = useState(1)
-    const [movies, setMovies] = useState([])
+    const [series, setSeries] = useState([])
     const [numOfPages, setNumOfPages] = useState()
 
     const [genres, setGenres] = useState([])
@@ -20,11 +20,11 @@ const Series = () => {
     const genreForURL = useGenre(selectedGenres)
 
     const fetchMovies = async () => {
-        const {data} = await axios.get(`${movieURL}${apiKey}&page=${page}&with_genres=${genreForURL}`)
+        const {data} = await axios.get(`${seriesURL}${apiKey}&page=${page}&with_genres=${genreForURL}`)
 
         // console.log(data)
 
-        setMovies(data.results)
+        setSeries(data.results)
         setNumOfPages(data.total_pages)
     }
 
@@ -37,7 +37,7 @@ const Series = () => {
         <div>
             <span className="page-title">TV Series</span>
             <Genres 
-                type="movie"
+                type="tv"
                 genres={genres} 
                 setGenres={setGenres}
                 selectedGenres={selectedGenres} 
@@ -45,15 +45,15 @@ const Series = () => {
                 setPage={setPage}
             />
             <div className="trending">
-                {movies && movies.map(movie => (
+                {series && series.map(tv => (
                     <SingleContent 
-                        key={movie.id} 
-                        id={movie.id} 
-                        poster={movie.poster_path} 
-                        title={movie.title || movie.name} 
-                        date={movie.release_date || movie.first_air_date} 
+                        key={tv.id} 
+                        id={tv.id} 
+                        poster={tv.poster_path} 
+                        title={tv.title || tv.name} 
+                        date={tv.release_date || tv.first_air_date} 
                         media_type="tv"
-                        vote_average={movie.vote_average}
+                        vote_average={tv.vote_average}
                     />
                 ))}
             </div>
