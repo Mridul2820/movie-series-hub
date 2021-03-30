@@ -1,10 +1,11 @@
 import React from 'react'
 import Trailers from './Trailers'
 import ModalGenre from './ModalGenre'
+import CastnCrew from './CastnCrew';
 
 import { img500, unavailable, unavailableLandscape } from "../config/config";
 
-const ModalContent = ({ content, videos }) => {
+const ModalContent = ({ id, media_type, content, videos}) => {
     return (
         <div className="content-modal">
             <img src={content.poster_path 
@@ -49,7 +50,7 @@ const ModalContent = ({ content, videos }) => {
                 </p>
 
                 <div>
-                    {/* <Carousel id={id} media_type={media_type} /> */}
+                    <CastnCrew id={id} media_type={media_type} />
                 </div>
 
                 <div className="trailer">

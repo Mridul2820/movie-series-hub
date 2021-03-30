@@ -46,7 +46,7 @@ const ContentModal = ({ children, media_type, id }) => {
         );
     
         setContent(data);
-        console.log(data);
+        // console.log(data);
     };
 
     const fetchVideo = async () => {
@@ -88,6 +88,8 @@ const ContentModal = ({ children, media_type, id }) => {
                     <ModalContent 
                         content={content}
                         videos={videos}
+                        id={id}
+                        media_type={media_type}
                     />
                 </div>
                 )}
