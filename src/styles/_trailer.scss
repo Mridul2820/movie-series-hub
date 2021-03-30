@@ -1,0 +1,29 @@
+.trailer {
+    @media only screen and (max-width: $bp-medium-1){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.trailer-title {
+    padding: 5px 0;
+}
+
+.trailer-video {
+    width: 560px;
+    height: 315px;
+
+    @media only screen and (max-width: $bp-large-2){
+        width: 100%;
+    }
+
+    @media only screen and (max-width: $bp-large-3){
+        height: 250px;
+    }
+
+    @media only screen and (max-width: $bp-medium-1){
+        width: 560px;
+        height: 315px;
+    }
+}

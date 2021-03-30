@@ -2,13 +2,11 @@ import React from 'react'
 
 const Trailers = ({ video }) => {
     return (
-        <div>
+        <div className="trailer">
             <br/>
             <h3 className="trailer-title">{video.name}</h3>
             <iframe 
-                
-                width="560" 
-                height="315" 
+                className="trailer-video"
                 src={`https://www.youtube.com/embed/${video.key}`}
                 title="YouTube video player" 
                 frameBorder="0" 

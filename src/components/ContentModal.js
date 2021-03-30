@@ -5,6 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import axios from 'axios';
 import Trailers from './Trailers'
+import ModalGenre from './ModalGenre'
 
 import { img500, unavailable, unavailableLandscape } from "../config/config";
 
@@ -121,6 +122,13 @@ const ContentModal = ({ children, media_type, id }) => {
                                 <i className="tagline">{content.tagline}</i>
                             )}
 
+                            <div className="chips">
+                                {content.genres.map(genre => (
+                                    <ModalGenre key={genre.id} genre={genre} />
+                                ))}
+                            </div>
+                            
+
                             <p className="content-modal-description">
                                 {content.overview}
                             </p>
@@ -129,7 +137,7 @@ const ContentModal = ({ children, media_type, id }) => {
                                 {/* <Carousel id={id} media_type={media_type} /> */}
                             </div>
 
-                            <div>
+                            <div className="trailer">
                                 {videos && videos.map(video => (
                                     <Trailers key={video.id} video={video} />
                                 ))}
