@@ -4,6 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import axios from 'axios';
+import Trailers from './Trailers'
 
 import { img500, unavailable, unavailableLandscape } from "../config/config";
 
@@ -34,7 +35,7 @@ const ContentModal = ({ children, media_type, id }) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [content, setContent] = useState()
-    const [video, setVideo] = useState()
+    const [videos, setVideos] = useState()
   
     const handleOpen = () => {
         setOpen(true);
@@ -50,7 +51,7 @@ const ContentModal = ({ children, media_type, id }) => {
         );
     
         setContent(data);
-        // console.log(data);
+        console.log(data);
     };
 
     const fetchVideo = async () => {
@@ -58,9 +59,9 @@ const ContentModal = ({ children, media_type, id }) => {
           `${detailURL}${media_type}/${id}/videos?${apiKey}&language=en-US`
         );
 
-        console.log(data)
+        // console.log(data)
     
-        setVideo(data.results[0]?.key);
+        setVideos(data.results);
     };
 
     useEffect(() => {
@@ -70,10 +71,10 @@ const ContentModal = ({ children, media_type, id }) => {
     }, []);
   
     return (
-        <div>
-            <button type="button"  className="media" onClick={handleOpen}>
+        <>
+            <div type="button" className="media" onClick={handleOpen}>
             {children}
-            </button>
+            </div>
             <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -120,25 +121,18 @@ const ContentModal = ({ children, media_type, id }) => {
                                 <i className="tagline">{content.tagline}</i>
                             )}
 
-                            <span className="content-modal-description">
+                            <p className="content-modal-description">
                                 {content.overview}
-                            </span>
+                            </p>
 
                             <div>
                                 {/* <Carousel id={id} media_type={media_type} /> */}
                             </div>
 
                             <div>
-                                <iframe 
-                                    width="560" 
-                                    height="315" 
-                                    src={`https://www.youtube.com/embed/${video}`}
-                                    title="YouTube video player" 
-                                    frameBorder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowFullScreen
-                                >
-                                </iframe>
+                                {videos && videos.map(video => (
+                                    <Trailers key={video.id} video={video} />
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -146,7 +140,7 @@ const ContentModal = ({ children, media_type, id }) => {
                 )}
             </Fade>
             </Modal>
-        </div>
+        </>
     );
 }
 
