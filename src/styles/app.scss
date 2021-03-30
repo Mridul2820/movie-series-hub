@@ -18,6 +18,15 @@ $bp-small-3: 25em;       //400px
     scroll-behavior: smooth;
 }
 
+html {
+    &::-webkit-scrollbar {
+        width: .5rem
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #ff8177;
+    }
+}
+
 body {
     font-family: 'Rubik', sans-serif;
 }
