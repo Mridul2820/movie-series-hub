@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Helmet } from 'react-helmet'
 
 // Components
 import Header from './components/Header'
@@ -18,6 +19,14 @@ const App = () => {
     return (
         <BrowserRouter>
             <Header />
+            <Helmet>
+                <title>Entertainment Hub</title>
+                <meta 
+                    name="description"
+                    content="Get the info of trending Movies and Series"
+                />
+                <meta name="keywords" content="movies, tv series, search movies"/>
+            </Helmet>
             <div className="app">
                 <Container>
                     <Switch>

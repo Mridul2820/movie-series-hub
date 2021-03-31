@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Helmet } from 'react-helmet'
+
 import SingleContent from '../components/SingleContent'
 import CustomPagination from '../components/CustomPagination'
 import Genres from '../components/Genres'
@@ -36,6 +38,14 @@ const Series = () => {
     return (
         <div>
             <span className="page-title">TV Series</span>
+            <Helmet>
+                <title>Explore Trending TV Series</title>
+                <meta 
+                    name="description"
+                    content="Explore New TV Series with genres"
+                />
+                <meta name="keywords" content="TV Series with genres"/>
+            </Helmet>
             <Genres 
                 type="tv"
                 genres={genres} 
