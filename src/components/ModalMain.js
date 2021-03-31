@@ -47,7 +47,7 @@ const ContentModal = ({ children, media_type, id }) => {
         );
     
         setContent(data);
-        console.log(data);
+        // console.log(data);
     };
 
     const fetchVideo = async () => {
