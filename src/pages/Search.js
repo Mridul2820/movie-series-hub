@@ -5,6 +5,7 @@ import SearchIcon from "@material-ui/icons/Search?";
 import SingleContent from '../components/SingleContent';
 import CustomPagination from '../components/CustomPagination';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const searchURL = 'https://api.themoviedb.org/3/search/'
 const apiKey = `api_key=${process.env.REACT_APP_API_KEY}`
@@ -46,6 +47,18 @@ const Search = () => {
     return (
         <div>
             <ThemeProvider theme={darkTheme}>
+                <Helmet>
+                    <title>
+                        {searchText  
+                        ? `${searchText} - Search Results` 
+                        : "Search Movies and TV Series"}
+                    </title>
+                    <meta 
+                        name="description"
+                        content="Explore New TV Series with genres"
+                    />
+                    <meta name="keywords" content="TV Series with genres"/>
+                </Helmet>
                 <div className="search">
                 <TextField
                     className="searchbox"

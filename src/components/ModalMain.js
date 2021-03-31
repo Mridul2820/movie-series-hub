@@ -5,6 +5,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import axios from 'axios';
 import ModalContent from './ModalContent';
+import { Helmet } from 'react-helmet';
 
 const detailURL = 'https://api.themoviedb.org/3/'
 const apiKey = `api_key=${process.env.REACT_APP_API_KEY}`
@@ -46,7 +47,7 @@ const ContentModal = ({ children, media_type, id }) => {
         );
     
         setContent(data);
-        // console.log(data);
+        console.log(data);
     };
 
     const fetchVideo = async () => {
@@ -85,6 +86,27 @@ const ContentModal = ({ children, media_type, id }) => {
             <Fade in={open}>
                 {content && (
                 <div className={classes.paper}>
+                    <Helmet>
+                        <title>{content.title || content.name}</title>
+                        <meta 
+                            name="description"
+                            content={`${content.title || content.name} Details`}
+                        />
+                        {content.type && 
+                            <meta 
+                                name="keywords" 
+                                content={`${content.title || content.name} ${content.type} Details`}
+                            />
+                        }
+                        <meta 
+                            name="keywords" 
+                            content={`${content.title || content.name} Cast`}
+                        />
+                        <meta 
+                            name="keywords" 
+                            content={`${content.title || content.name} full crew`}
+                        />
+                    </Helmet>
                     <ModalContent 
                         content={content}
                         videos={videos}
